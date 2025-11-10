@@ -7,12 +7,13 @@ from typing import Iterable
 from discord.ext import commands
 
 from .core import Core
+from .verification import Verification
 
 
 def default_cogs() -> Iterable[type[commands.Cog]]:
     """Return the default set of cogs shipped with StitchBot."""
 
-    return (Core,)
+    return (Core, Verification)
 
 
 async def register_default_cogs(bot: commands.Bot) -> None:
