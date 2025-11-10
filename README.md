@@ -1,0 +1,2 @@
+# StitchBot
+discord bot
