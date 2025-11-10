@@ -20,7 +20,7 @@ class BotSettings:
 
     token: str
     guild_id: Optional[int] = None
-    command_prefix: str = "!"
+    command_prefix: str = "/"
 
 
 class ConfigurationError(RuntimeError):
@@ -80,7 +80,7 @@ def load_settings(*, env_paths: tuple[Path, ...] = DEFAULT_ENV_PATHS) -> BotSett
     else:
         guild_id = None
 
-    prefix = os.getenv("STITCHBOT_PREFIX", "!")
+    prefix = os.getenv("STITCHBOT_PREFIX", "/")
 
     return BotSettings(token=token, guild_id=guild_id, command_prefix=prefix)
 

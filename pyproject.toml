@@ -13,7 +13,8 @@ authors = [
 ]
 license = { text = "MIT" }
 dependencies = [
-  "discord.py>=2.3.2"
+  "discord.py>=2.3.2",
+  "aiohttp>=3.8",
 ]
 
 [project.urls]

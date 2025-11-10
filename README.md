@@ -27,7 +27,7 @@ help you get started quickly.
 
    ```env
    STITCHBOT_TOKEN=your_bot_token
-   STITCHBOT_PREFIX=!
+   STITCHBOT_PREFIX=/
    STITCHBOT_GUILD=123456789012345678  # optional: restrict interactions to a guild
    ```
 
