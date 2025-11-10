@@ -21,15 +21,20 @@ stitchbot/
 - **Package Manager**: uv
 
 ## Configuration
-The bot uses environment variables with the `STITCHBOT_` prefix:
+The bot uses environment variables for configuration:
 
-- `STITCHBOT_TOKEN` (required): Discord bot token
-- `STITCHBOT_PREFIX` (optional): Command prefix (default: `/`)
-- `STITCHBOT_GUILD` (optional): Guild ID to restrict bot interactions
+**Required:**
+- `STITCHBOT_TOKEN`: Discord bot token
+- `ROVER_API_KEY`: RoVer API key for Roblox verification
+
+**Optional:**
+- `STITCHBOT_PREFIX`: Command prefix (default: `/`)
+- `STITCHBOT_GUILD`: Guild ID to restrict bot interactions
 
 ## Available Commands
 - `/ping` - Returns bot latency healthcheck
 - `/info` - Displays diagnostic information (uptime, version, etc.)
+- `/verify [member]` - Look up Roblox account linked via RoVer (checks yourself if no member specified)
 
 ## Running in Replit
 The bot runs automatically via the `stitchbot` workflow which executes the CLI entrypoint. The workflow is configured to run in console mode and will automatically restart when changes are made to the code.
@@ -40,6 +45,12 @@ The bot runs automatically via the `stitchbot` workflow which executes the CLI e
 - Custom log level: `stitchbot --log-level DEBUG`
 
 ## Recent Changes
+- **2025-11-10**: RoVer API integration
+  - Added ROVER_API_KEY secret for RoVer API authentication
+  - Updated RoVerClient to support API key authentication via Authorization header
+  - Fixed type annotations in verification.py to accept both Member and User types
+  - Bot now fully supports `/verify` command for Roblox account lookups
+
 - **2025-11-10**: Initial import and setup in Replit environment
   - Installed dependencies using uv package manager
   - Configured STITCHBOT_TOKEN secret
