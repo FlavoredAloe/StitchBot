@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "stitchbot"
+version = "0.1.0"
+description = "Discord automation bot"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "StitchBot Maintainers" }
+]
+license = { text = "MIT" }
+dependencies = [
+  "discord.py>=2.3.2"
+]
+
+[project.urls]
+Homepage = "https://example.com/stitchbot"
+Source = "https://example.com/stitchbot/source"
+
+[project.scripts]
+stitchbot = "stitchbot.cli:main"
