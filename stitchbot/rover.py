@@ -44,7 +44,7 @@ class RoVerClient:
         *,
         api_key: str | None = None,
         session: aiohttp.ClientSession | None = None,
-        base_url: str = "https://verify.eryn.io/api",
+        base_url: str = "https://registry.rover.link/api",
     ) -> None:
         self._api_key = api_key
         self._session: aiohttp.ClientSession | None = session

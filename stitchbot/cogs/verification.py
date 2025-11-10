@@ -70,7 +70,7 @@ class Verification(commands.Cog):
                 f"?userId={profile.roblox_id}&width=420&height=420&format=png"
             )
         )
-        embed.set_footer(text="Data provided by RoVer (verify.eryn.io)")
+        embed.set_footer(text="Data provided by RoVer (registry.rover.link)")
         return embed
 
 
