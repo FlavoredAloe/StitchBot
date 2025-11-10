@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from typing import TYPE_CHECKING
 
 import discord
@@ -18,7 +19,10 @@ class Verification(commands.Cog):
 
     def __init__(self, bot: "StitchBot", *, rover: RoVerClient | None = None) -> None:
         self.bot = bot
-        self._rover = rover or RoVerClient()
+        if rover is None:
+            api_key = os.getenv("ROVER_API_KEY")
+            rover = RoVerClient(api_key=api_key)
+        self._rover = rover
 
     async def cog_unload(self) -> None:  # pragma: no cover - discord teardown
         await self._rover.close()
@@ -47,7 +51,7 @@ class Verification(commands.Cog):
         embed = self._build_embed(target, profile)
         await ctx.reply(embed=embed, mention_author=False)
 
-    def _build_embed(self, member: discord.Member, profile: RoVerProfile) -> discord.Embed:
+    def _build_embed(self, member: discord.Member | discord.User, profile: RoVerProfile) -> discord.Embed:
         embed = discord.Embed(
             title=f"RoVer verification for {member.display_name}",
             colour=discord.Colour.green(),

@@ -42,9 +42,11 @@ class RoVerClient:
     def __init__(
         self,
         *,
+        api_key: str | None = None,
         session: aiohttp.ClientSession | None = None,
         base_url: str = "https://verify.eryn.io/api",
     ) -> None:
+        self._api_key = api_key
         self._session: aiohttp.ClientSession | None = session
         self._owns_session = session is None
         self._base_url = base_url.rstrip("/")
@@ -69,9 +71,13 @@ class RoVerClient:
 
         session = self._get_session()
         url = f"{self._base_url}/user/{discord_id}"
+        
+        headers = {}
+        if self._api_key:
+            headers["Authorization"] = f"Bearer {self._api_key}"
 
         try:
-            async with session.get(url) as response:
+            async with session.get(url, headers=headers) as response:
                 if response.status == 404:
                     raise RoVerUserNotFoundError(
                         "No Roblox account is linked to this Discord user via RoVer."
